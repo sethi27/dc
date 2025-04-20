@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Australian Pie - World Flavors</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="../../index.html">
+                <img src="../../images/logo.png" alt="World Flavors Logo">
+            </a>
+        </div>
+        <nav>
+            <button class="hamburger" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="nav-links">
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link">Dishes</a>
+                    <div class="dropdown-content">
+                        <a href="../dish-tale.html">Butter Chicken</a>
+                        <a href="../tacodishtale.html">Tacos</a>
+                        <a href="../pizzamargeritatale.html">Pizza Margherita</a>
+                        <a href="australian-pie.html">Australian Pie</a>
+                    </div>
+                </div>
+                <a href="../trivia.html" class="nav-link">Taste Test Trivia</a>
+                <a href="../about.html" class="nav-link">About</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="menu-overlay"></div>
+
+    <main>
+        <div class="coming-soon-container">
+            <h1>Australian Meat Pie</h1>
+            <div class="coming-soon-content">
+                <img src="../../images/pie.jpg" alt="Australian Meat Pie" class="coming-soon-image">
+                <div class="coming-soon-text">
+                    <h2>Coming Soon!</h2>
+                    <p>We're working on bringing you the complete story, recipe, and tips for the iconic Australian Meat Pie. Check back soon for updates!</p>
+                    <a href="../all-recipes.html" class="btn">Back to All Recipes</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="../map.html">Map</a>
+            <a href="../all-recipes.html">All Recipes</a>
+            <a href="../about.html">About</a>
+        </div>
+        <p class="contact-info">Contact us: asethi@gmail.com</p>
+        <p class="license-info">Visual elements and imagery are licensed through Adobe Stock</p>
+        <p class="copyright">© 2025 Aitareya Sethi . All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const menuOverlay = document.querySelector('.menu-overlay');
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            // Toggle mobile menu
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+            });
+            
+            // Close menu when clicking overlay
+            menuOverlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+            
+            // Handle dropdowns in mobile view
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                link.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+            
+            // Close menu when clicking a link
+            const navItems = document.querySelectorAll('.nav-links a:not(.nav-link)');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
